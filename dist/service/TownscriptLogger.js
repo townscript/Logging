@@ -23,6 +23,16 @@ var TownscriptLogger = /** @class */ (function () {
             throw new Error('Please setup configuration first.');
         winston.log('info', message);
     };
+    TownscriptLogger.error = function (errorJson) {
+        if (TownscriptLogger._townscriptLogger === undefined)
+            throw new Error('Please setup configuration first.');
+        winston.log('error', errorJson);
+    };
+    TownscriptLogger.debug = function (errorJson) {
+        if (TownscriptLogger._townscriptLogger === undefined)
+            throw new Error('Please setup configuration first.');
+        winston.debug('debug', errorJson);
+    };
     return TownscriptLogger;
 }());
 exports.TownscriptLogger = TownscriptLogger;

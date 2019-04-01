@@ -1,10 +1,10 @@
 import "jasmine";
 import {TownscriptLogger} from "./TownscriptLogger";
-import {Configuration} from "..";
+import {LoggerConfiguration} from "..";
 
 describe('TownscriptLogger library', () => {
 
-    let config: Configuration = {
+    let config: LoggerConfiguration = {
         token: "",
         subdomain: "townscript",
         tags: ["Winston-NodeJS"],

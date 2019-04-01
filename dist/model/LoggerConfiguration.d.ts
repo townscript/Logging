@@ -1,4 +1,4 @@
-export interface Configuration {
+export interface LoggerConfiguration {
     tags: string[];
     json: boolean;
     subdomain: string;

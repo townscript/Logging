@@ -1,12 +1,12 @@
 import * as winston from 'winston';
 const {Loggly} = require('winston-loggly-bulk');
-import {Configuration} from "..";
+import {LoggerConfiguration} from "..";
 
 export class TownscriptLogger {
-    private _config: Configuration;
+    private _config: LoggerConfiguration;
     private static _townscriptLogger: TownscriptLogger;
 
-    private constructor(config: Configuration) {
+    private constructor(config: LoggerConfiguration) {
         this._config = config;
         winston.add(new Loggly({
             token: config.token,
@@ -16,11 +16,11 @@ export class TownscriptLogger {
         }));
     }
 
-    static getConfig = ():Configuration => {
+    static getConfig = ():LoggerConfiguration => {
         return TownscriptLogger._townscriptLogger._config;
     };
 
-    static configure = (config: Configuration):void => {
+    static configure = (config: LoggerConfiguration):void => {
         TownscriptLogger._townscriptLogger = new TownscriptLogger(config);
     };
 
@@ -28,5 +28,17 @@ export class TownscriptLogger {
         if(TownscriptLogger._townscriptLogger === undefined)
             throw new Error('Please setup configuration first.');
         winston.log('info', message);
-    }
+    };
+
+    static error = (errorJson: string) => {
+        if(TownscriptLogger._townscriptLogger === undefined)
+            throw new Error('Please setup configuration first.');
+        winston.log('error', errorJson);
+    };
+
+    static debug = (errorJson: string) => {
+        if(TownscriptLogger._townscriptLogger === undefined)
+            throw new Error('Please setup configuration first.');
+        winston.debug('debug', errorJson);
+    };
 }
