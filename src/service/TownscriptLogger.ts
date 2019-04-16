@@ -24,19 +24,19 @@ export class TownscriptLogger {
         TownscriptLogger._townscriptLogger = new TownscriptLogger(config);
     };
 
-    static info = (message: string) => {
+    static info = (message: any) => {
         if(TownscriptLogger._townscriptLogger === undefined)
             throw new Error('Please setup configuration first.');
         winston.log('info', message);
     };
 
-    static error = (errorJson: string) => {
+    static error = (errorJson: any) => {
         if(TownscriptLogger._townscriptLogger === undefined)
             throw new Error('Please setup configuration first.');
         winston.log('error', errorJson);
     };
 
-    static debug = (errorJson: string) => {
+    static debug = (errorJson: any) => {
         if(TownscriptLogger._townscriptLogger === undefined)
             throw new Error('Please setup configuration first.');
         winston.debug('debug', errorJson);
