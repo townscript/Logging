@@ -1,6 +1,6 @@
 {
   "name": "@townscript/logger",
-  "version": "1.4.0",
+  "version": "1.4.2",
   "description": "Townscript logger using Loggly",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
