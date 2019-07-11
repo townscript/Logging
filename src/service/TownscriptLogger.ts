@@ -1,5 +1,3 @@
-import * as winston from 'winston';
-//const { Loggly } = require('winston-loggly-bulk');
 import { LoggerConfiguration } from "..";
 import "./loggly.tracker-latest.min.js";
 
@@ -17,12 +15,6 @@ export class TownscriptLogger {
             'tag': config.tags,
             'json': config.json
         });
-        // winston.add(new Loggly({
-        //     token: config.token,
-        //     subdomain: config.subdomain,
-        //     tags: config.tags,
-        //     json: config.json
-        // }));
     }
 
     static getConfig = (): LoggerConfiguration => {
@@ -36,19 +28,25 @@ export class TownscriptLogger {
     static info = (message: any) => {
         if (TownscriptLogger._townscriptLogger === undefined)
             throw new Error('Please setup configuration first.');
-        _LTracker.push('Hello World. ' + message);
-        //winston.log('info', message);
+        _LTracker.push({
+            'text': message,
+            'type': "info"
+        });
     };
 
     static error = (errorJson: any) => {
         if (TownscriptLogger._townscriptLogger === undefined)
             throw new Error('Please setup configuration first.');
-        //winston.log('error', errorJson);
+        let obj = { 'type': "error" }
+        Object.assign(obj, errorJson);
+        _LTracker.push(obj);
     };
 
     static debug = (errorJson: any) => {
         if (TownscriptLogger._townscriptLogger === undefined)
             throw new Error('Please setup configuration first.');
-        //winston.debug('debug', errorJson);
+        let obj = { 'type': "error" }
+        Object.assign(obj, errorJson);
+        _LTracker.push(obj);
     };
 }
