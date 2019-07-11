@@ -1,6 +1,6 @@
 {
   "name": "@townscript/logger",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "Townscript logger using Loggly",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -31,7 +31,5 @@
     "ts-node": "^8.0.3",
     "typescript": "^3.3.4000"
   },
-  "dependencies": {
-    "winston-loggly-bulk": "^3.0.1"
-  }
+  "dependencies": {}
 }

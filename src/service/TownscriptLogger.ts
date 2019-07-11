@@ -1,5 +1,5 @@
 import * as winston from 'winston';
-const { Loggly } = require('winston-loggly-bulk');
+//const { Loggly } = require('winston-loggly-bulk');
 import { LoggerConfiguration } from "..";
 import "./loggly.tracker-latest.min.js";
 
@@ -43,12 +43,12 @@ export class TownscriptLogger {
     static error = (errorJson: any) => {
         if (TownscriptLogger._townscriptLogger === undefined)
             throw new Error('Please setup configuration first.');
-        winston.log('error', errorJson);
+        //winston.log('error', errorJson);
     };
 
     static debug = (errorJson: any) => {
         if (TownscriptLogger._townscriptLogger === undefined)
             throw new Error('Please setup configuration first.');
-        winston.debug('debug', errorJson);
+        //winston.debug('debug', errorJson);
     };
 }
