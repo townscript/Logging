@@ -1,5 +1,5 @@
 import { LoggerConfiguration } from "..";
-import "./loggly.tracker-latest.min.js";
+import "../../src/service/loggly.tracker-latest.min.js";
 
 declare var _LTracker: any;
 
