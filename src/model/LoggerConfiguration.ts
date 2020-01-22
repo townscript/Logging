@@ -1,7 +1,5 @@
 export interface LoggerConfiguration {
-    tags: string[];
-    json: boolean;
-    subdomain: string;
-    token: string;
+    logstashUrl: string;
+    token?: string;
     sendConsoleErrors: boolean;
 }
