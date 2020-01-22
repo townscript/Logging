@@ -4,8 +4,7 @@ import { LogstashShipper } from "./LogstashShipper";
 export class TownscriptLogger {
     private static logstashShipper: LogstashShipper;
 
-    private constructor(config: LoggerConfiguration) {
-        TownscriptLogger.logstashShipper = new LogstashShipper(config);
+    private constructor() {
     }
 
     static getConfig = (): LoggerConfiguration => {
