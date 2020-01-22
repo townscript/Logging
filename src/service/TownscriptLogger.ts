@@ -2,26 +2,23 @@ import { LoggerConfiguration } from "..";
 import { LogstashShipper } from "./LogstashShipper";
 
 export class TownscriptLogger {
-    private _config: LoggerConfiguration;
-    private static _townscriptLogger: TownscriptLogger;
-    private logstashShipper: LogstashShipper;
+    private static logstashShipper: LogstashShipper;
 
     private constructor(config: LoggerConfiguration) {
-        this.logstashShipper = new LogstashShipper();
-        this._config = config;
+        TownscriptLogger.logstashShipper = new LogstashShipper(config);
     }
 
     static getConfig = (): LoggerConfiguration => {
-        return TownscriptLogger._townscriptLogger._config;
+        return TownscriptLogger.logstashShipper.getConfig();
     };
 
     static configure = (config: LoggerConfiguration): void => {
-        TownscriptLogger._townscriptLogger = new TownscriptLogger(config);
+        TownscriptLogger.logstashShipper = new LogstashShipper(config);
     };
 
     static error = (error: any) => {
-        if (TownscriptLogger._townscriptLogger === undefined)
+        if (TownscriptLogger.logstashShipper === undefined)
             throw new Error('Please setup configuration first.');
-        TownscriptLogger._townscriptLogger.logstashShipper.sendDataToLogstash(TownscriptLogger.getConfig(), "error", error);
+        TownscriptLogger.logstashShipper.sendDataToLogstash("error", error);
     };
 }
